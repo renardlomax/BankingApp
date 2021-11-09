@@ -4,7 +4,7 @@ function AllData(){
   var mytable = [];
   let row_color = "table-info"
   for (var i = 0; i < ctx.users.length; i++) {
-    mytable.push(<tr><td class={row_color}>{ctx.users[i].name}</td><td class={row_color}>{ctx.users[i].email}</td><td class={row_color}>{ctx.users[i].password}</td></tr>);
+    mytable.push(<tr><td class={row_color}>{ctx.users[i].name}</td><td class={row_color}>{ctx.users[i].email}</td><td class={row_color}>{ctx.users[i].balance}</td><td class={row_color}>{ctx.users[i].password}</td></tr>);
   }
   console.log(mytable)
   return (
@@ -16,6 +16,7 @@ function AllData(){
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Password</th>
+      <th scope="col">Balance</th>
       {/* <th scope="col">Balance</th> */}
     </tr>
   </thead>
