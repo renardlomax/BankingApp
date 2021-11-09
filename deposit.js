@@ -1,4 +1,4 @@
-function Deposit() {
+	function Deposit() {
 	const [show, setShow]                   = React.useState(true);
 	const [disabled, setDisabled]           = React.useState(true);
 	const [status, setStatus]   	        = React.useState('');
@@ -92,6 +92,18 @@ function Deposit() {
 	}
 		return;
 	}
+	 function clearForm(){
+    setName('');
+    setPassword('');
+    setShow(true);
+  }
+ 	 function logOut(){
+		for (var i=0, length=ctx.users.length; i<length; i++) {
+			ctx.users[i].loggedin = false;
+		};
+		setShow(true);
+    	clearForm();
+	}
 	
 	return (
 		<Card
@@ -110,21 +122,19 @@ function Deposit() {
 				Current Balance: ${balance.toFixed(2)}<br/><br/>
 				
 				Deposit Amount:<br/>
-				<input type="number" className="form-control" id="deposit" placeholder="Deposit Amount" value={deposit} onChange={e => setDeposit(e.currentTarget.value)}/><br/>
+				<input type="number" className="form-control"  placeholder="Deposit Amount" value={deposit} onChange={e => setDeposit(e.currentTarget.value)}/><br/>
+				<button type="submit" className="btn btn-primary"   onClick={depositMoney}>Deposit</button>
 				{disabled ? (
 					<>
-					<button type="submit" className="btn btn-primary" disabled="disabled" onClick={depositMoney}>Deposit</button>
-					<br/>
-					<a href="#withdraw" class="button">Withdraw</a><br/>
-					<br/> 
-					<a href="#alldata" class="button">your transactions</a>
-					
+					<br/><br/>
+					<button type="submit" className="btn btn-primary" id="deposit" onClick={logOut}>Log Out</button> <br/>
 					</>
+		
+									
 				):(
 					<>
-					<button type="submit" className="btn btn-primary" onClick={depositMoney}>Deposit</button><br/><br/> 
-					
-					
+					<br/><br/>
+				 <button type="submit" className="btn btn-primary" id="deposit" onClick={logOut}>Log Out</button><br/><br/>
 					</>
 				)}
 				</>
